@@ -1,0 +1,13 @@
+.flexer {
+    display: flex;
+    align-items:center;
+    justify-content: flex-end;
+    margin-top: 1%;
+}
+.image{
+    margin: 0 34%;
+}
+.signup {
+    margin-right: 3%;
+    
+}

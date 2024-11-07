@@ -1,0 +1,17 @@
+.margin {
+    display:flex;
+    width:50%;
+    align-items: center;
+    margin: 0 auto;
+    
+}
+.slight {
+    margin-left: 22%;
+}
+.imager {
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhf3ymQ0NOOXt2Cjv_24JFMthnIS-DQJwpDA&s');
+    min-height: 250px;
+    min-width: 50vw;
+    border: 2px solid black;
+    background-size: cover;
+}
