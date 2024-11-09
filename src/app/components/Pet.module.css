@@ -1,0 +1,5 @@
+.pet {
+    display:flex;
+    flex-direction: row;
+    padding: 12px;
+}
