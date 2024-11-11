@@ -4,7 +4,9 @@ import styles from './Homepage.module.css';
 import Banner from './Banner';
 import Pet from '../components/Pet';
 import Pets from '../components/Pets';
-
+import { useRouter } from 'next/navigation';
+import { useState } from 'react';
+import Poster from './Poster';
 type Pet = {
     id: number;
     name: string;
@@ -13,6 +15,8 @@ type Pet = {
     shelter: string;
     description: string;
 };
+
+
 const PET_INIT: Pet[] = [
     {
         id: 1,
@@ -41,10 +45,19 @@ const PET_INIT: Pet[] = [
 ];
 
 export default function Homepage () {
+
+    const [Petser, setPetser] = useState<Pet[]>(PET_INIT);
+
+    const adderPet = (newPet: Pet) => {
+        setPetser((startPets => [...startPets, {...newPet, id:(startPets.length + 1)}]))
+    }
     return (
         <div>
             <Banner/>
-            <Pets pets={PET_INIT}/>
+            <Pets pets={Petser}/>
+            <div className = "hidden">
+            <Poster addPet = {adderPet}/>
+            </div>
         </div>  
     );
 }

@@ -1,33 +1,9 @@
 .flexer {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 15px; /* Adds space between form inputs */
-    margin: 2% 0;
+    align-items:center;
 }
-
 .center {
-    text-align: center;
-    color: #333;
-    margin-bottom: 10px;
-}
-
-.center h1 {
-    font-size: 2.5rem;
-    color: #333;
-    letter-spacing: 1.2px;
-    margin-bottom: 8px;
-}
-
-.center h2 {
-    font-size: 1.5rem;
-    color: #555;
-    letter-spacing: 1px;
-    margin-bottom: 20px;
-}
-
-.image {
-    display: block;
     margin: 0 auto;
     border-radius: 50%;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);

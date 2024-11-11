@@ -1,56 +1,18 @@
 .flexman {
-    display: flex;
+    display:flex;
     flex-direction: column;
     align-items: center;
     margin: 2% 0;
-    gap: 15px; 
+    
 }
-
 .center {
     display: flex;
     align-items: center;
-    flex-direction: column;
+    flex-direction:column;
     margin: 2% 0;
-    text-align: center;
-    color: #333;
 }
-
-.center h1 {
-    font-size: 2.5rem;
-    color: #333;
-    margin-bottom: 10px;
-    letter-spacing: 1.2px;
-}
-
-.center h2 {
-    font-size: 1.5rem;
-    color: #555;
-    margin-bottom: 20px;
-    letter-spacing: 0.8px;
-}
-
 .border {
     border: 1px solid brown;
-    border-radius: 5px;
-    padding: 10px;
-    width: 80%; 
-    max-width: 400px; /* Limits input width on larger screens */
-    font-size: 1rem;
-    color: #333;
-    background-color: #f9f9f9;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: border-color 0.3s ease;
+    margin: 1% 0;
 }
 
-.border:focus {
-    border-color: #555;
-    outline: none;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
-}
-
-/* Button component styles */
-.signin-button {
-    width: 80%;
-    max-width: 400px;
-    font-size: 1rem;
-}
