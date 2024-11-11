@@ -34,7 +34,7 @@
     margin-bottom: 20px;
 }
 
-input {
+.input {
     width: 80%;
     max-width: 400px;
     padding: 10px;
@@ -47,7 +47,7 @@ input {
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-input:focus {
+.input:focus {
     border-color: #555;
     outline: none;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);

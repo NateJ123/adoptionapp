@@ -18,11 +18,11 @@ export default function Signup() {
         <h1 className = {styles.center}> FUREVER HOME</h1>
         <h2 className = {styles.center}> SIGN UP</h2>
         <form className = {styles.flexer}>
-            <input type = "text" placeholder = "USERNAME"></input>
-            <input type = "text" placeholder = "PASSWORD"></input>
-            <input type = "text" placeholder = "PHONE NUMBER"></input>
-            <input type = "text" placeholder = "EMAIL"></input>
-            <input type = "text" placeholder = "ADDRESS"></input>
+            <input className={styles.input} type = "text" placeholder = "USERNAME"></input>
+            <input className={styles.input} type = "text" placeholder = "PASSWORD"></input>
+            <input className={styles.input} type = "text" placeholder = "PHONE NUMBER"></input>
+            <input className={styles.input} type = "text" placeholder = "EMAIL"></input>
+            <input className={styles.input} type = "text" placeholder = "ADDRESS"></input>
             <Buttoner className = "submit" type = 'button' onClick = {handleSubmit}> Sign Up </Buttoner>
         </form>
 
