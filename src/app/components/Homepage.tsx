@@ -2,8 +2,8 @@
 import React from 'react';
 import styles from './Homepage.module.css';
 import Banner from './Banner';
-import Pet from '../components/Pet';
-import Pets from '../components/Pets';
+import Pet from './Pet';
+import Pets from './Pets';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import Poster from './Poster';
