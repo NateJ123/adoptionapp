@@ -3,3 +3,19 @@
     flex-direction: row;
     padding: 12px;
 }
+.petImg {
+    border: solid gray 1px;
+    border-radius: 5px;
+    margin: 0 20px 0 0;
+}
+.basic {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 200vh;
+}

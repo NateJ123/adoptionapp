@@ -3,7 +3,7 @@ import React from 'react';
 import Image from 'next/image';
 import styles from './Poster.module.css';
 import Buttoner from './Button';
-import Link from 'next/link';
+import Banner from './Banner';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
@@ -53,6 +53,7 @@ export default function Poster({addPet, style }: PetProps) {
     }
     return (
         <div>
+        <Banner/>
         <Image className = {styles.center} alt = 'dog_picture' src = 'https://png.pngtree.com/png-vector/20230814/ourmid/pngtree-an-image-of-an-adorable-dog-sticker-clipart-vector-png-image_6901476.png' width = {100} height = {100}/>
         <h1 className = {styles.flexer}> Post a Pet</h1>
         

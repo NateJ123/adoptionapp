@@ -1,0 +1,32 @@
+.body {
+    min-height: 100%;
+}
+.select {
+    margin: 10px 0px 10px 5px;
+}
+.contactInfo {
+    display:flex;
+    flex-direction: column;
+    margin: 20px 0 0 50px;
+}
+.form {
+    margin: 20px 0 0 0;
+}
+.input {
+    border: solid black 1px;
+    border-radius: 5px;
+    padding: 2px 4px 2px 9px;
+    margin: 0 0 10px 0;
+}
+.ta {
+    border: solid black 1px;
+    border-radius: 5px;
+    padding:5px;
+    width:100%;
+    max-width: 400px;
+    height:150px;
+    margin:0 0 0 12px;
+}
+.button {
+    margin: 20px 0 0 0;
+}

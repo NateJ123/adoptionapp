@@ -23,13 +23,15 @@ export default function Pet({pet}: PetProps) {
                 height = {200}
                 priority
             />
-            <div className={styles.basic}>
-                <h2> {pet.name} </h2>
-                <h3> {pet.age} </h3>
-                <h3> {pet.shelter} </h3>
-            </div>
-            <div>
-                <p> {pet.description} </p>
+            <div className={styles.content}>
+                <div className={styles.basic}>
+                    <h2> Name: {pet.name} </h2>
+                    <h3> Age: {pet.age} </h3>
+                    <h3> Currently at: {pet.shelter} </h3>
+                </div>
+                <div className={styles.desc}>
+                    <p> {pet.description} </p>
+                </div>
             </div>
         </Card>
     )

@@ -39,7 +39,7 @@ const PET_INIT: Pet[] = [
         name: 'Perry',
         imageUrl: 'https://i.pinimg.com/originals/6d/3b/96/6d3b96ede33a7d7b7f9b861877112d4d.png',
         age: 'Unkown',
-        shelter: 'None',
+        shelter: 'Other',
         description: 'secret agent',
     }
 ];
@@ -55,7 +55,7 @@ export default function Homepage () {
         <div>
             <Banner/>
             <Pets pets={Petser}/>
-            <div className = "hidden">
+            <div className = {styles.hidden}>
             <Poster addPet = {adderPet}/>
             </div>
         </div>  

@@ -1,5 +1,5 @@
 import Pet from './Pet';
-
+import styles from './Pets.module.css'
 type Pet = {
     id: number;
     name: string;
@@ -15,7 +15,7 @@ type PetProps = {
 
 export default function Pets({ pets }: PetProps) {
     return (
-        <div>
+        <div className={styles.petList}>
             {pets.map((pet) => (
                 <Pet key={pet.id} pet={pet}/>
             ))}
