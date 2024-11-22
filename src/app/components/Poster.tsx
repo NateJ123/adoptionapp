@@ -6,6 +6,7 @@ import Buttoner from './Button';
 import Banner from './Banner';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
+import Link from 'next/link';
 
 type Pet = {
     id: number;
@@ -31,26 +32,29 @@ export default function Poster({addPet, style }: PetProps) {
         shelter: '',
         description: '',
     });
-   
-    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    
-        const {id, value} = event.target;
-        setPetData({
-          ...petData,
-          [id]: value
-        })
-      }
       
     const router = useRouter();
+
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const { id, value } = event.target;
+        setPetData({ ...petData, [id]: value });
+    };
+
     const handleSubmit = (event: React.FormEvent) => {
         event.preventDefault();
-        
-        const newPet = {id: Date.now(), ...petData };
-        console.log(petData);
-        //addPet(newPet);
-        setPetData({ name: '', imageUrl: '', age: '', shelter: '', description: '' });
-        router.push(`/homepage`);
-    }
+    
+        const storedPets = JSON.parse(localStorage.getItem("pets") || "[]");
+        const newId = storedPets.length > 0 ? storedPets[storedPets.length - 1].id + 1 : 1;
+    
+        const newPet: Pet = { id: newId, ...petData } as Pet;
+    
+        const updatedPets = [...storedPets, newPet];
+        localStorage.setItem("pets", JSON.stringify(updatedPets));
+    
+        // Pass new pet as query parameter and redirect
+        router.push(`/homepage?newPet=${encodeURIComponent(JSON.stringify(newPet))}`);
+    };
+    
     return (
         <div>
         <Banner/>
