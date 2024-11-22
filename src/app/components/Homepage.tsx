@@ -4,8 +4,8 @@ import styles from './Homepage.module.css';
 import Banner from './Banner';
 import Pet from './Pet';
 import Pets from './Pets';
-import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
 import Poster from './Poster';
 type Pet = {
     id: number;
@@ -46,18 +46,55 @@ const PET_INIT: Pet[] = [
 
 export default function Homepage () {
 
-    const [Petser, setPetser] = useState<Pet[]>(PET_INIT);
+    const [Petser, setPetser] = useState<Pet[]>([]);
 
-    const adderPet = (newPet: Pet) => {
-        setPetser((startPets => [...startPets, {...newPet, id:(startPets.length + 1)}]))
-    }
+    // Initialize localStorage and state on first load
+    useEffect(() => {
+        const storedPets = JSON.parse(localStorage.getItem("pets") || "[]");
+        setPetser(storedPets);
+    }, []);
+
+    // Check if a new pet is being passed via query parameter
+    useEffect(() => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const newPetParam = urlParams.get("newPet");
+
+        if (newPetParam) {
+            const newPet = JSON.parse(decodeURIComponent(newPetParam));
+            setPetser((prevPets) => [...prevPets, newPet]);
+
+            // Clear the query parameter from the URL
+            urlParams.delete("newPet");
+            window.history.replaceState({}, document.title, "/homepage");
+        }
+    }, []);
+
+    // Sync localStorage changes dynamically
+    useEffect(() => {
+        const handleStorageChange = () => {
+            const storedPets = JSON.parse(localStorage.getItem("pets") || "[]");
+            setPetser(storedPets);
+        };
+
+        window.addEventListener("storage", handleStorageChange);
+        return () => {
+            window.removeEventListener("storage", handleStorageChange);
+        };
+    }, []);
+
+    useEffect(() => {
+        if (!localStorage.getItem("pets")) {
+            localStorage.setItem("pets", JSON.stringify(PET_INIT));
+        }
+        const storedPets = JSON.parse(localStorage.getItem("pets") || "[]");
+        setPetser(storedPets);
+    }, []);
+    
+    
     return (
         <div>
             <Banner/>
             <Pets pets={Petser}/>
-            <div className = {styles.hidden}>
-            <Poster addPet = {adderPet}/>
-            </div>
         </div>  
     );
 }
