@@ -1,5 +1,8 @@
-import Pet from './Pet';
-import styles from './Pets.module.css'
+"use client";
+
+import Pet from "./Pet";
+import styles from './Pets.module.css';
+
 type Pet = {
     id: number;
     name: string;
@@ -10,15 +13,15 @@ type Pet = {
 };
 
 type PetProps = {
-    pets: Pet[]
+    pets: Pet[];
 };
 
 export default function Pets({ pets }: PetProps) {
     return (
-        <div className={styles.petList}>
+        <div>
             {pets.map((pet) => (
-                <Pet key={pet.id} pet={pet}/>
+                <Pet key={pet.id} pet={pet} />
             ))}
         </div>
-    )
+    );
 }
