@@ -1,0 +1,37 @@
+.flexer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 20px; 
+    margin-top: 1%;
+    padding: 10px 0; 
+}
+.image {
+    margin: 0 32.5%;
+    border-radius: 50%; /* Makes the image circular */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    width: 100px;
+    height: 100px;
+}
+.signup {
+    background-color: #333; 
+    color: #ffffff;
+    font-size: 1rem;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-right: 3%;
+}
+.signup:hover {
+    background-color: #555;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+.signup:active {
+    background-color: #222;
+    transform: translateY(0);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
