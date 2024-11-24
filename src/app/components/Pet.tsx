@@ -1,7 +1,9 @@
-"use client"
-import Image from 'next/image';
-import styles from './Pet.module.css';
-import Card from './Card';
+"use client";
+
+import Image from "next/image";
+import styles from "./Pet.module.css";
+import Card from "./Card";
+import React, { useState, useEffect } from "react";
 
 type PetProps = {
     pet: {
@@ -13,14 +15,40 @@ type PetProps = {
         description: string;
     };
 };
-export default function Pet({pet}: PetProps) {
+
+export default function Pet({ pet }: PetProps) {
+    const [isFavorited, setIsFavorited] = useState(false);
+
+    
+    useEffect(() => {
+        const favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
+        const isAlreadyFavorited = favorites.some((fav: any) => fav.id === pet.id);
+        setIsFavorited(isAlreadyFavorited);
+    }, [pet.id]);
+
+    const toggleFavorite = () => {
+        setIsFavorited(!isFavorited);
+
+    
+        const favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
+        if (!isFavorited) {
+            favorites.push(pet); // Add the full pet object
+        } else {
+            const updatedFavorites = favorites.filter((fav: any) => fav.id !== pet.id); // Remove pet
+            localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
+            return; // Exit early after updating localStorage
+        }
+        localStorage.setItem("favorites", JSON.stringify(favorites));
+    };
+
     return (
         <Card className={styles.pet}>
-            <Image className={styles.petImg}
+            <Image
+                className={styles.petImg}
                 src={pet.imageUrl}
                 alt={pet.name}
-                width = {200}
-                height = {200}
+                width={200}
+                height={200}
                 priority
             />
             <div className={styles.content}>
@@ -33,6 +61,9 @@ export default function Pet({pet}: PetProps) {
                     <p> {pet.description} </p>
                 </div>
             </div>
+            <button className={styles.favoriteButton} onClick={toggleFavorite}>
+                {isFavorited ? "Unfavorite" : "Favorite"}
+            </button>
         </Card>
-    )
+    );
 }
