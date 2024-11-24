@@ -18,7 +18,7 @@ type PetProps = {
 
 export default function Pets({ pets }: PetProps) {
     return (
-        <div>
+        <div className={styles.petList}>
             {pets.map((pet) => (
                 <Pet key={pet.id} pet={pet} />
             ))}

@@ -2,7 +2,7 @@
  "use client"; 
 interface buttonProps {
     
-    onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
+    onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
     type?: 'button' | 'submit' | 'reset';
     className: string;
     children: React.ReactNode;

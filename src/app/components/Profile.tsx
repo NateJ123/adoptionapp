@@ -3,21 +3,16 @@
 import React from 'react';
 import Image from 'next/image';
 import styles from './Signup.module.css'; 
+import Banner from './Banner';
 import Buttoner from './Button';
 
 export default function Profile() {
     return (
         <div>
+            <Banner/>
             {/* Profile Header */}
-            <Image
-                className={styles.image}
-                alt="dog_picture"
-                src="https://png.pngtree.com/png-vector/20230814/ourmid/pngtree-an-image-of-an-adorable-dog-sticker-clipart-vector-png-image_6901476.png"
-                width={100}
-                height={100}
-            />
-            <h1 className={styles.center}> FUREVER HOME</h1>
-            <h2 className={styles.center}> PROFILE</h2>
+            
+            <h1 className={styles.center}> PROFILE</h1>
             
             {/* Profile Information */}
             <form className={styles.flexer}>

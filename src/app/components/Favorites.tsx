@@ -1,7 +1,8 @@
 "use client";
-
+import Banner from './Banner';
 import React, { useEffect, useState } from "react";
-
+import Pets from "./Pets";
+import styles from "./Favorites.module.css";
 type Pet = {
     id: number;
     name: string;
@@ -26,23 +27,10 @@ export default function Favorites() {
 
     return (
         <div>
-            <h1>Favorites</h1>
+            <Banner/>
+            <h1 className={styles.h1}>Favorites</h1>
             {favorites.length > 0 ? (
-                <ul>
-                    {favorites.map((pet) => (
-                        <li key={pet.id}> {/* Ensure unique key */}
-                            <img
-                                src={pet.imageUrl}
-                                alt={pet.name}
-                                style={{ width: "100px", height: "100px" }}
-                            />
-                            <h3>{pet.name}</h3>
-                            <p>Age: {pet.age}</p>
-                            <p>Shelter: {pet.shelter}</p>
-                            <p>{pet.description}</p>
-                        </li>
-                    ))}
-                </ul>
+                    <Pets pets = {favorites}/>
             ) : (
                 <p>You don't have any favorite pets yet!</p>
             )}

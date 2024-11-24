@@ -5,6 +5,7 @@ import styles from "./Pet.module.css";
 import Card from "./Card";
 import React, { useState, useEffect } from "react";
 
+
 type PetProps = {
     pet: {
         id: number;
