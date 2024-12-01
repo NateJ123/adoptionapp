@@ -1,14 +1,77 @@
-.flexer {
+.header {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    margin: 1rem 0;
+    color: #333;
+}
+
+.form {
     display: flex;
     flex-direction: column;
-    align-items:center;
-}
-.center {
+    align-items: center;
+    width: 100%;
+    max-width: 500px;
     margin: 0 auto;
-    align-items:center;
-    
+    padding: 1rem;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.formField {
+    width: 90%;
+    margin-bottom: 1.5rem;
+}
+
+.formField input,
+.formField textarea {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.formField input:focus,
+.formField textarea:focus {
+    border-color: #0070f3;
+}
+
+.textarea {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.3s ease;
+    resize: vertical; /* Allows resizing only vertically */
+}
+
+.textarea:focus {
+    border-color: #0070f3;
 }
 
 
+.submit {
+    margin-top: 1rem;
+    width: 100%;
+    max-width: 200px;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 5px;
+    background-color: #0070f3;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
 
-
+.submit:hover {
+    background-color: #005bb5;
+}
