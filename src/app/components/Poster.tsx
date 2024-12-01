@@ -58,18 +58,57 @@ export default function Poster({addPet, style }: PetProps) {
     return (
         <div>
         <Banner/>
-        <Image className = {styles.center} alt = 'dog_picture' src = 'https://png.pngtree.com/png-vector/20230814/ourmid/pngtree-an-image-of-an-adorable-dog-sticker-clipart-vector-png-image_6901476.png' width = {100} height = {100}/>
-        <h1 className = {styles.flexer}> Post a Pet</h1>
-        
-        <form className = {styles.flexer}>
-            <input  id = "name" type = "text" placeholder = "NAME OF PET" value ={petData.name} onChange = {handleChange}></input>
-            <input  id = "imageUrl" type = "text" placeholder = "IMAGE OF PET" value ={petData.imageUrl} onChange = {handleChange}></input>
-            <input  id = "age" type = "text" placeholder = "AGE OF PET" value ={petData.age} onChange = {handleChange}></input>
-            <input  id = "shelter" type = "text" placeholder = "SHELTER/ADDRESS" value ={petData.shelter} onChange = {handleChange}></input>
-            <input  id = "description" type = "text" placeholder = "DESCRIPTION OF PET" value ={petData.description} onChange = {handleChange}></input>
-            <Buttoner className = "submit" type = 'button' onClick = {handleSubmit}> Post A Pet </Buttoner>
-        </form>
+        <h1 className={styles.header}>Post a Pet</h1>
 
+        <form className={styles.form} onSubmit={handleSubmit}>
+            <div className={styles.formField}>
+                <input
+                    id="name"
+                    type="text"
+                    placeholder="Name of Pet"
+                    value={petData.name}
+                    onChange={handleChange}
+                />
+            </div>
+            <div className={styles.formField}>
+                <input
+                    id="imageUrl"
+                    type="text"
+                    placeholder="Image URL"
+                    value={petData.imageUrl}
+                    onChange={handleChange}
+                />
+            </div>
+            <div className={styles.formField}>
+                <input
+                    id="age"
+                    type="text"
+                    placeholder="Age (e.g., '3 months')"
+                    value={petData.age}
+                    onChange={handleChange}
+                />
+            </div>
+            <div className={styles.formField}>
+                <input
+                    id="shelter"
+                    type="text"
+                    placeholder="Shelter or Address"
+                    value={petData.shelter}
+                    onChange={handleChange}
+                />
+            </div>
+            <div className={styles.formField}>
+                <textarea
+                    id="description"
+                    placeholder="A description of your pet!"
+                    value={petData.description}
+                    onChange={handleChange}
+                    rows={3}
+                    className={styles.textarea}
+                />
+            </div>
+            <Buttoner className = "submit" type = 'button' onClick = {handleSubmit}> Post A Pet </Buttoner>
+            </form>
         </div>
     )
 }
