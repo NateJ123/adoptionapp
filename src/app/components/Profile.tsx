@@ -7,19 +7,15 @@ import Banner from './Banner';
 export default function Profile() {
     return (
         <div>
-            <Banner/>
-            {/* Profile Header */}
-            
-            <h1 className={styles.center}> PROFILE</h1>
-            
-            {/* Profile Information */}
+            <Banner />
+            <h1 className={styles.header}>Profile</h1>
             <form className={styles.flexer}>
                 <div className={styles.inputContainer}>
                     <label className={styles.label}>Username:</label>
                     <input
                         className={styles.input}
                         type="text"
-                        value="JohnDoe" 
+                        value="JohnDoe"
                         readOnly
                     />
                 </div>
@@ -28,7 +24,7 @@ export default function Profile() {
                     <input
                         className={styles.input}
                         type="password"
-                        value="********" 
+                        value="********"
                         readOnly
                     />
                 </div>
@@ -37,7 +33,7 @@ export default function Profile() {
                     <input
                         className={styles.input}
                         type="text"
-                        value="(123) 456-7890" 
+                        value="(123) 456-7890"
                         readOnly
                     />
                 </div>
@@ -55,12 +51,11 @@ export default function Profile() {
                     <input
                         className={styles.input}
                         type="text"
-                        value="123 Main St, Anytown, USA" 
+                        value="123 Main St, Anytown, USA"
                         readOnly
                     />
                 </div>
             </form>
-
         </div>
     );
 }
