@@ -3,6 +3,7 @@ import React from 'react';
 import styles from './Contact.module.css';
 import Banner from './Banner';
 import { useState } from 'react';
+import { useEffect } from 'react';
 
 type Center = {
     id: string;
@@ -14,41 +15,33 @@ type Center = {
     }
 }
 
-const centers: Center[] = [
-    {
-        id:'1',
-        name: 'Athens Pets',
-        contact: {
-            email: 'athensPets@gmail.com',
-            phoneNumber: '123-456-7890',
-            address: '123 West Broad St. Athens, GA 30605'
-        }
-    },
-    {
-        id:'2',
-        name: 'Pet Plus',
-        contact: {
-            email: 'petPlus@gmail.com',
-            phoneNumber: '111-222-3333',
-            address: '111 Lumpkin St. Athens, GA 30605'
-        }
-    },
-    {
-        id:'3',
-        name: 'PetPals',
-        contact: {
-            email: 'petPals@gmail.com',
-            phoneNumber: '999-888-7777',
-            address: '432 Clayton St. Athens, GA 30605'
-        }
-    }
-];
+
 
 export default function Contact () {
     const [selectedCenterId, setSelectedCenterId] = useState<string>('');
     const [contactInfo, setContactInfo] = useState<Center['contact'] | null>(null);
     const [message, setMessage] = useState<string>('');
     const [userEmail, setUserEmail] = useState<string>('');
+    const [centers, setCenters] = useState<Center[]>([]);
+
+    
+    useEffect(() => {
+        const fetchShelter = async () => {
+            try {
+                const response = await fetch('/api/shelter');
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const data = await response.json();
+                setCenters(data.shelters);
+                console.log(data);
+                console.log(data.shelters);
+            } catch (error) {
+                console.log('Error from fetchShelter:', error);
+            }
+        };
+        fetchShelter();
+    }, []);
 
     const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         const selectedId = event.target.value;
@@ -80,6 +73,8 @@ export default function Contact () {
         setSelectedCenterId('');
         setContactInfo(null);
     }
+
+
     return (
         <div className={styles.body}>
             <Banner/>

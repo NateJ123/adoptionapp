@@ -47,49 +47,22 @@ const PET_INIT: Pet[] = [
 export default function Homepage () {
 
     const [Petser, setPetser] = useState<Pet[]>([]);
-
-    // Initialize localStorage and state on first load
-    useEffect(() => {
-        const storedPets = JSON.parse(localStorage.getItem("pets") || "[]");
-        setPetser(storedPets);
-    }, []);
-
-    // Check if a new pet is being passed via query parameter
-    useEffect(() => {
-        const urlParams = new URLSearchParams(window.location.search);
-        const newPetParam = urlParams.get("newPet");
-
-        if (newPetParam) {
-            const newPet = JSON.parse(decodeURIComponent(newPetParam));
-            setPetser((prevPets) => [...prevPets, newPet]);
-
-            // Clear the query parameter from the URL
-            urlParams.delete("newPet");
-            window.history.replaceState({}, document.title, "/homepage");
-        }
-    }, []);
-
-    // Sync localStorage changes dynamically
-    useEffect(() => {
-        const handleStorageChange = () => {
-            const storedPets = JSON.parse(localStorage.getItem("pets") || "[]");
-            setPetser(storedPets);
-        };
-
-        window.addEventListener("storage", handleStorageChange);
-        return () => {
-            window.removeEventListener("storage", handleStorageChange);
-        };
-    }, []);
-
-    useEffect(() => {
-        if (!localStorage.getItem("pets")) {
-            localStorage.setItem("pets", JSON.stringify(PET_INIT));
-        }
-        const storedPets = JSON.parse(localStorage.getItem("pets") || "[]");
-        setPetser(storedPets);
-    }, []);
     
+    useEffect(() => {
+        const fetchPets = async () => {
+            try {
+                const response = await fetch('/api/pet');
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const data = await response.json();
+                setPetser(data.pets);
+            } catch (error) {
+                console.log('Error from fetchPets:', error);
+            }
+        };
+        fetchPets();
+    }, []);
     
     return (
         <div>

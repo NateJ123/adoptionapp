@@ -40,19 +40,21 @@ export default function Poster({addPet, style }: PetProps) {
         setPetData({ ...petData, [id]: value });
     };
 
-    const handleSubmit = (event: React.FormEvent) => {
+    const handleSubmit = async (event: React.FormEvent) => {
+        
         event.preventDefault();
-    
-        const storedPets = JSON.parse(localStorage.getItem("pets") || "[]");
-        const newId = storedPets.length > 0 ? storedPets[storedPets.length - 1].id + 1 : 1;
-    
-        const newPet: Pet = { id: newId, ...petData } as Pet;
-    
-        const updatedPets = [...storedPets, newPet];
-        localStorage.setItem("pets", JSON.stringify(updatedPets));
-    
-        // Pass new pet as query parameter and redirect
-        router.push(`/homepage?newPet=${encodeURIComponent(JSON.stringify(newPet))}`);
+        
+        const response = await fetch('/api/pet', {
+            method: 'POST',
+            headers: {
+                'Content-type': 'application/json',
+            }, body: JSON.stringify({...petData, id: Date.now()})
+        });
+        if(!response.ok) {
+            throw new Error('Network response was not ok')
+        }
+
+        router.push(`/homepage`);
     };
     
     return (
@@ -98,12 +100,11 @@ export default function Poster({addPet, style }: PetProps) {
                 />
             </div>
             <div className={styles.formField}>
-                <textarea
+                <input
                     id="description"
                     placeholder="A description of your pet!"
                     value={petData.description}
                     onChange={handleChange}
-                    rows={3}
                     className={styles.textarea}
                 />
             </div>
