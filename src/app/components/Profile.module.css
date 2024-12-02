@@ -2,44 +2,52 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 15px; 
-    margin: 2% 0;
+    gap: 10px;
+    margin: 5% auto;
+    width: 100%;
+    max-width: 500px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.center {
-    text-align: center;
-    color: #333;
-    margin-bottom: 10px;
-}
-
-.input-container {
+.inputContainer { /* Fix class name to camelCase */
     display: flex;
     flex-direction: column;
-    align-items: center; 
-    width: 100%; 
-    max-width: 400px; 
+    align-items: stretch; /* Align inputs and labels to the left, equal widths */
+    gap: 5px;
+    width: 90%; /* Ensure consistent width for all input containers */
+    margin: 5px 0; /* Add consistent spacing between containers */
 }
 
 .label {
-    margin-bottom: 5px; 
+    font-weight: bold;
     font-size: 1rem;
-    color: #333;
+    color: #555;
 }
 
 .input {
-    width: 100%; 
+    width: 100%; /* Ensure input fields span the full width of the container */
     padding: 10px;
-    border: 1px solid brown;
+    border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 1rem;
     color: #333;
-    background-color: #f9f9f9;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    background-color: #f8f8f8;
+    transition: all 0.3s ease;
 }
 
 .input:focus {
-    border-color: #555;
+    border-color: #007bff;
+    box-shadow: 0 2px 4px rgba(0, 123, 255, 0.25);
     outline: none;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+}
+
+.header {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    color: #333;
 }
