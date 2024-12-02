@@ -1,10 +1,8 @@
 "use client";
 
 import React from 'react';
-import Image from 'next/image';
-import styles from './Signup.module.css'; 
+import styles from './Profile.module.css'; 
 import Banner from './Banner';
-import Buttoner from './Button';
 
 export default function Profile() {
     return (
@@ -16,8 +14,8 @@ export default function Profile() {
             
             {/* Profile Information */}
             <form className={styles.flexer}>
-                <div>
-                    <label>Username:</label>
+                <div className={styles.inputContainer}>
+                    <label className={styles.label}>Username:</label>
                     <input
                         className={styles.input}
                         type="text"
@@ -25,8 +23,8 @@ export default function Profile() {
                         readOnly
                     />
                 </div>
-                <div>
-                    <label>Password:</label>
+                <div className={styles.inputContainer}>
+                    <label className={styles.label}>Password:</label>
                     <input
                         className={styles.input}
                         type="password"
@@ -34,8 +32,8 @@ export default function Profile() {
                         readOnly
                     />
                 </div>
-                <div>
-                    <label>Phone Number:</label>
+                <div className={styles.inputContainer}>
+                    <label className={styles.label}>Phone Number:</label>
                     <input
                         className={styles.input}
                         type="text"
@@ -43,8 +41,8 @@ export default function Profile() {
                         readOnly
                     />
                 </div>
-                <div>
-                    <label>Email:</label>
+                <div className={styles.inputContainer}>
+                    <label className={styles.label}>Email:</label>
                     <input
                         className={styles.input}
                         type="email"
@@ -52,8 +50,8 @@ export default function Profile() {
                         readOnly
                     />
                 </div>
-                <div>
-                    <label>Address:</label>
+                <div className={styles.inputContainer}>
+                    <label className={styles.label}>Address:</label>
                     <input
                         className={styles.input}
                         type="text"

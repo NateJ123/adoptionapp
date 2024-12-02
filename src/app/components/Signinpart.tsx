@@ -7,11 +7,6 @@ import { signIn } from 'next-auth/react';
 import { signOut } from 'next-auth/react';
 import { useState } from 'react';
 
-
-
-
-
-
 //This is the two headings and inputs and button on main page
 export default function Signinpart () {
     const [user,setuser] = useState({
@@ -27,9 +22,6 @@ export default function Signinpart () {
             [id]: value
         }));
     }
-
-    
-
     
     const router = useRouter();
     const signin = async (event: React.FormEvent) => {

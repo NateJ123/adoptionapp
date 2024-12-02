@@ -1,0 +1,45 @@
+.flexer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px; 
+    margin: 2% 0;
+}
+
+.center {
+    text-align: center;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    width: 100%; 
+    max-width: 400px; 
+}
+
+.label {
+    margin-bottom: 5px; 
+    font-size: 1rem;
+    color: #333;
+}
+
+.input {
+    width: 100%; 
+    padding: 10px;
+    border: 1px solid brown;
+    border-radius: 5px;
+    font-size: 1rem;
+    color: #333;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.input:focus {
+    border-color: #555;
+    outline: none;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+}

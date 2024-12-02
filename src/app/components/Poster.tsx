@@ -108,7 +108,7 @@ export default function Poster({addPet, style }: PetProps) {
                     className={styles.textarea}
                 />
             </div>
-            <Buttoner className = "submit" type = 'button' onClick = {handleSubmit}> Post A Pet </Buttoner>
+            <Buttoner className = {styles.submit} type = 'button' onClick = {handleSubmit}> Post A Pet </Buttoner>
             </form>
         </div>
     )
