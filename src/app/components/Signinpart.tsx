@@ -60,7 +60,7 @@ export default function Signinpart () {
             </div>
             <form className = {styles.flexman} onSubmit = {signin} >
                 <input type = "text" className = {styles.border} placeholder = "Username" value = {user.username} id = "username" onChange = {handleChange}/>
-                <input type = "text" className = {styles.border} placeholder = "Password" value = {user.password} id = "password"  onChange = {handleChange}/> 
+                <input type="password" className={styles.border} placeholder="Password" value={user.password} id="password" onChange={handleChange} />
                 <Buttoner type = "submit" className = "signin-button"> Sign In</Buttoner>
             </form>
         </div>
