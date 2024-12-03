@@ -14,10 +14,14 @@ type Pet = {
 
 export default function Favorites() {
     const [favorites, setFavorites] = useState<Pet[]>([]);
-
+    const username = localStorage.getItem('username');
+    if (!username) {
+        console.log('no user');
+    } else {
+    
     useEffect(() => {
         // Retrieve full pet objects from localStorage
-        const storedFavorites = JSON.parse(localStorage.getItem("favorites") || "[]");
+        const storedFavorites = JSON.parse(localStorage.getItem(username) || "[]");
 
         // Only update state if storedFavorites is valid
         if (Array.isArray(storedFavorites)) {
@@ -36,4 +40,5 @@ export default function Favorites() {
             )}
         </div>
     );
+    }
 }

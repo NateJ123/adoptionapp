@@ -16,8 +16,8 @@ export const {
     providers: [
         CredentialsProvider({
             credentials: {
-                username: {label: "Username", type: "text"},
-                password: {label: "Password", type: "password"},
+                username: {},
+                password: {},
             },
             async authorize (credentials) {
                 const bcrypt = require('bcryptjs');
@@ -32,7 +32,7 @@ export const {
                         return null;
                     }
                    
-                        const isMatch = await bcrypt.compare(credentials.password, user.password)
+                    const isMatch = await bcrypt.compare(credentials.password, user.password)
                     
 
                     if(isMatch) {
@@ -53,4 +53,5 @@ export const {
         },
         }),
     ],
+
 });

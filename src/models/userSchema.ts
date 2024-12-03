@@ -31,9 +31,8 @@ email: {
 address: {
     type:String,
     required: true
-}
-
-})
+},
+});
 
 const user2: Model<User> = mongoose.models.User || mongoose.model<User>("User", userSchema);
 export default user2;

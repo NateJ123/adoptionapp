@@ -3,9 +3,9 @@ import React from 'react';
 import Buttoner from './Button';
 import styles from './Signinpart.module.css'
 import { useRouter } from 'next/navigation';
-import { signIn } from 'next-auth/react';
-import { signOut } from 'next-auth/react';
+import { signIn, signOut } from 'next-auth/react';
 import { useState } from 'react';
+import { useEffect } from 'react';
 
 //This is the two headings and inputs and button on main page
 export default function Signinpart () {
@@ -13,6 +13,8 @@ export default function Signinpart () {
         username: '',
         password:''
     })
+    const [username, setUsername] = useState('');
+
     
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 
@@ -21,11 +23,20 @@ export default function Signinpart () {
             ...previousState,
             [id]: value
         }));
+        setUsername(user.username);
     }
     
+    useEffect(() => {
+        const savedUsername = localStorage.getItem('username');
+        if (savedUsername) {
+            setUsername(savedUsername);
+        }
+    }, []);
+
     const router = useRouter();
-    const signin = async (event: React.FormEvent) => {
+    const signin = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
+        localStorage.setItem('username', username);       
         if(user.username != "" && user.password != ""){
             try {
                 const response = await signIn("credentials", {
@@ -36,9 +47,9 @@ export default function Signinpart () {
                 if(!response?.ok ||  !response || response?.error){
                     alert("Invalid username or password");
                     return;
-                } 
-                   
-                    router.push('/homepage')
+                }
+                router.push('/homepage')
+                return response; 
                 
             }
             catch (err) {

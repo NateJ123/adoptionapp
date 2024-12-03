@@ -1,12 +1,11 @@
 "use client";
 import React from 'react';
-import Image from 'next/image';
 import styles from './Poster.module.css';
 import Buttoner from './Button';
 import Banner from './Banner';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import Link from 'next/link';
+import Image  from 'next/image';
 
 type Pet = {
     id: number;
@@ -22,7 +21,18 @@ type PetProps = {
     style?: React.CSSProperties;
 };
 
-
+async function isValidImage(url: string) {
+    try {
+        const response = await fetch(url, {method: 'HEAD'});
+        const contentType = response.headers.get('content-type');
+        if (response.ok && contentType?.startsWith('image/')) {
+            return true;
+        }
+    } catch (error) {
+        console.error('Error Checking URL:', error);
+        return false;
+    }
+}
 export default function Poster({addPet, style }: PetProps) {
    
     const [petData, setPetData] = useState({
@@ -43,18 +53,28 @@ export default function Poster({addPet, style }: PetProps) {
     const handleSubmit = async (event: React.FormEvent) => {
         
         event.preventDefault();
-        
-        const response = await fetch('/api/pet', {
-            method: 'POST',
-            headers: {
-                'Content-type': 'application/json',
-            }, body: JSON.stringify({...petData, id: Date.now()})
-        });
-        if(!response.ok) {
-            throw new Error('Network response was not ok')
-        }
+        if (!(await isValidImage(petData.imageUrl))) {
+            alert("Please enter a valid image URL.");
+            setPetData({
+                name: '',
+            imageUrl: '',
+            age: '',
+            shelter: '',
+            description: '',
+            })
+        } else {
+            const response = await fetch('/api/pet', {
+                method: 'POST',
+                headers: {
+                    'Content-type': 'application/json',
+                }, body: JSON.stringify({...petData, id: Date.now()})
+            });
+            if(!response.ok) {
+                throw new Error('Network response was not ok')
+            }
 
-        router.push(`/homepage`);
+            router.push(`/homepage`);
+        }
     };
     
     return (

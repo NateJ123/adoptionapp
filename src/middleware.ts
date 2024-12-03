@@ -9,6 +9,7 @@ export async function middleware(request:any) {
     const {nextUrl} = request;
     const session = await auth();
     const isAuthenticated = !!session?.user;
+    console.log(session);
     console.log(isAuthenticated, nextUrl.pathname);
 
     const reqUrl = new URL(request.url);

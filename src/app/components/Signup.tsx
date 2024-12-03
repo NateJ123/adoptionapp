@@ -3,7 +3,6 @@ import React, { FormEvent } from 'react';
 import Image from 'next/image';
 import styles from './Signup.module.css';
 import Buttoner from './Button';
-import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 

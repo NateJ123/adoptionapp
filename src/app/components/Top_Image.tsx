@@ -3,7 +3,6 @@ import React from 'react';
 import Image from 'next/image';
 import Button from './Button';
 import styles from './Top_Image.module.css';
-import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
 //image and button on top of home page non signed in

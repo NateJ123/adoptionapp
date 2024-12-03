@@ -19,29 +19,30 @@ type PetProps = {
 
 export default function Pet({ pet }: PetProps) {
     const [isFavorited, setIsFavorited] = useState(false);
-
+    const username = localStorage.getItem('username');
+    if (!username) {
+        console.log('no user')
+    } else {
+        useEffect(() => {
+                const favorites = JSON.parse(localStorage.getItem(username) || "[]");
+                const isAlreadyFavorited = favorites.some((fav: any) => fav.id === pet.id);
+                setIsFavorited(isAlreadyFavorited);
+            }, [pet.id]);
     
-    useEffect(() => {
-        const favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
-        const isAlreadyFavorited = favorites.some((fav: any) => fav.id === pet.id);
-        setIsFavorited(isAlreadyFavorited);
-    }, [pet.id]);
-
-    const toggleFavorite = () => {
-        setIsFavorited(!isFavorited);
-
-    
-        const favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
-        if (!isFavorited) {
-            favorites.push(pet); // Add the full pet object
-        } else {
-            const updatedFavorites = favorites.filter((fav: any) => fav.id !== pet.id); // Remove pet
-            localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
-            return; // Exit early after updating localStorage
-        }
-        localStorage.setItem("favorites", JSON.stringify(favorites));
-    };
-
+        const toggleFavorite = () => {
+            setIsFavorited(!isFavorited);
+        
+            const favorites = JSON.parse(localStorage.getItem(username) || "[]");
+            if (!isFavorited) {
+                favorites.push(pet); // Add the full pet object
+            } else {
+                const updatedFavorites = favorites.filter((fav: any) => fav.id !== pet.id); // Remove pet
+                localStorage.setItem(username, JSON.stringify(updatedFavorites));
+                return; // Exit early after updating localStorage
+            }
+            localStorage.setItem(username, JSON.stringify(favorites));
+        };
+   
     return (
         <Card className={styles.pet}>
             <Image
@@ -67,4 +68,5 @@ export default function Pet({ pet }: PetProps) {
             </button>
         </Card>
     );
+    }
 }
