@@ -53,11 +53,7 @@ export default function Profile() {
                     <input
                         className={styles.input}
                         type="text"
-<<<<<<< Updated upstream
-                        value="JohnDoe"
-=======
                         value={user.username} 
->>>>>>> Stashed changes
                         readOnly
 
                     />
@@ -68,11 +64,7 @@ export default function Profile() {
                     <input
                         className={styles.input}
                         type="password"
-<<<<<<< Updated upstream
-                        value="********"
-=======
                         value={user.password}
->>>>>>> Stashed changes
                         readOnly
 
                     />
@@ -82,11 +74,7 @@ export default function Profile() {
                     <input
                         className={styles.input}
                         type="text"
-<<<<<<< Updated upstream
-                        value="(123) 456-7890"
-=======
                         value={user.phonenumber}
->>>>>>> Stashed changes
                         readOnly
 
                     />
@@ -106,13 +94,6 @@ export default function Profile() {
                     <input
                         className={styles.input}
                         type="text"
-<<<<<<< Updated upstream
-                        value="123 Main St, Anytown, USA"
-                        readOnly
-                    />
-                </div>
-            </form>
-=======
                         value={user.address}
                         readOnly
                     />
@@ -120,7 +101,6 @@ export default function Profile() {
                 <Buttoner className = "button" type = 'button' onClick={handleChange}> Edit Profile </Buttoner>
                 </form>
             
->>>>>>> Stashed changes
         </div>
     );
 }
