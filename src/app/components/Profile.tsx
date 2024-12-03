@@ -96,7 +96,6 @@ export default function Profile() {
                     <input
                         className={styles.input}
                         type="email"
-                        value="johndoe@example.com"
                         value={user.email}
                         readOnly
 
